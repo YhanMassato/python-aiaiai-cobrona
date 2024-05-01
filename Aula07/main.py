@@ -4,7 +4,7 @@ def main() :
     print("Etec")
 
 app = QtWidgets.QApplication([])
-agenda = uic.loadUi('agenda.ui')
+agenda = uic.loadUi("agenda.ui")
 agenda.btnCadastro.clicked.connect(main)
 
 agenda.show()
