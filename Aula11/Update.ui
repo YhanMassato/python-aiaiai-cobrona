@@ -20,9 +20,9 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>210</x>
-      <y>20</y>
-      <width>171</width>
+      <x>270</x>
+      <y>30</y>
+      <width>391</width>
       <height>81</height>
      </rect>
     </property>
@@ -33,7 +33,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Agenda</string>
+     <string>ATUALIZAR CONTATO</string>
     </property>
    </widget>
    <widget class="QWidget" name="verticalLayoutWidget">
@@ -58,16 +58,16 @@
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_3">
      <item>
-      <widget class="QLineEdit" name="textEdit_3"/>
+      <widget class="QLineEdit" name="idLine"/>
      </item>
      <item>
-      <widget class="QLineEdit" name="textEdit_4"/>
+      <widget class="QLineEdit" name="nomeLine"/>
      </item>
      <item>
-      <widget class="QLineEdit" name="textEdit_5"/>
+      <widget class="QLineEdit" name="emailLine"/>
      </item>
      <item>
-      <widget class="QLineEdit" name="textEdit_2"/>
+      <widget class="QLineEdit" name="telefoneLine"/>
      </item>
     </layout>
    </widget>
@@ -82,14 +82,14 @@
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_4">
      <item>
-      <widget class="QLabel" name="label_2">
+      <widget class="QLabel" name="label_6">
        <property name="font">
         <font>
          <pointsize>14</pointsize>
         </font>
        </property>
        <property name="text">
-        <string>id</string>
+        <string>ID</string>
        </property>
       </widget>
      </item>
@@ -157,7 +157,7 @@
      </item>
     </layout>
    </widget>
-   <widget class="QPushButton" name="btnCadastro">
+   <widget class="QPushButton" name="btnUpdate">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -172,20 +172,20 @@
      </font>
     </property>
     <property name="text">
-     <string>CADASTRAR</string>
+     <string>ATUALIZAR</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="btnConsCont">
+   <widget class="QPushButton" name="voltar">
     <property name="geometry">
      <rect>
-      <x>800</x>
-      <y>60</y>
-      <width>121</width>
+      <x>750</x>
+      <y>30</y>
+      <width>151</width>
       <height>71</height>
      </rect>
     </property>
     <property name="text">
-     <string>consultarContato</string>
+     <string>VOLTAR</string>
     </property>
    </widget>
   </widget>

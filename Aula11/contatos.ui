@@ -49,22 +49,22 @@
     </column>
     <column>
      <property name="text">
-      <string> </string>
+      <string/>
      </property>
     </column>
     <column>
      <property name="text">
-      <string> </string>
+      <string/>
      </property>
     </column>
     <column>
      <property name="text">
-      <string> </string>
+      <string/>
      </property>
     </column>
     <column>
      <property name="text">
-      <string> </string>
+      <string/>
      </property>
     </column>
    </widget>
@@ -81,7 +81,7 @@
      <string>Gerar PDF</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="editContact">
     <property name="geometry">
      <rect>
       <x>460</x>

@@ -85,10 +85,76 @@ def BotaoVoltarAgenda():
     listarContatos.hide()
     agenda.show()
 
+def Atualizar():
+    id = update.idLine.text()
+    nome = update.nomeLine.text()
+    email = update.emailLine.text()
+    telefone = update.telefoneLine.text()
     
+    if update.radioButton_2.isChecked():
+        tipoTelefone = 'residencial'
+    elif update.radioButton.isChecked():
+        tipoTelefone = 'celular'
+    else :
+        tipoTelefone = 'nao especificado' 
+    
+    try:
+        cursor = banco.cursor()
+        cursor.execute(f" UPDATE tb_contatos set nome='{nome}', email='{email}', telefone='{telefone}', tipoTelefone='{tipoTelefone}' where id={int(id)}")
+        banco.commit()
+        print(f'Dado do contato {nome} foram alterados com sucesso')
+        VoltarContatos()
+    except Exception as e:
+        print(f'Ocorreu o erro {e} ao tentar atualizar os dados')
+    
+def InserirDados(id, nome, email, telefone, tipoTelefone):
+    listarContatos.hide()
+    update.show()
+    update.idLine.setText(str(id))
+    update.nomeLine.setText(str(nome))
+    update.emailLine.setText(str(email))
+    update.telefoneLine.setText(str(telefone))
+    
+    if tipoTelefone == "residencial":
+        update.radioButton_2.setChecked(True)
+    elif tipoTelefone == "celular":
+        update.radioButton.setChecked(True)
+    else:
+        update.radioButton_2.setChecked(False)
+        update.radioButton.setChecked(False)    
+
+def Editar():
+    linhaContato = listarContatos.tabelaCtt.currentRow()
+    cursor = banco.cursor()
+    cursor.execute("SELECT * FROM tb_contatos")
+    contatos_lidos = cursor.fetchall()
+    valorId = contatos_lidos[linhaContato][0]
+    nomeCtt = contatos_lidos[linhaContato][1]
+    emailCtt = contatos_lidos[linhaContato][2]
+    telefoneCtt = contatos_lidos[linhaContato][3]
+    
+    if contatos_lidos[linhaContato][4] == "residencial":
+        tipoTelefone = "residencial"
+    elif contatos_lidos[linhaContato][4] == "celular":
+        tipoTelefone = "celular"
+    else:
+        tipoTelefone = "nao especificado"
+    
+    
+    InserirDados(valorId, nomeCtt, emailCtt, telefoneCtt, tipoTelefone)
+
+def VoltarContatos():
+    update.hide()
+    listarContatos.show()
+    ConsultarContato()
+
 app = QtWidgets.QApplication([])
 agenda = uic.loadUi("design.ui")
 listarContatos = uic.loadUi("contatos.ui")
+update = uic.loadUi("Update.ui")
+
+update.btnUpdate.clicked.connect(Atualizar)
+update.voltar.clicked.connect(VoltarContatos)
 
 agenda.btnCadastro.clicked.connect(Cadastrar)
 agenda.btnConsCont.clicked.connect(ConsultarContato)
@@ -96,6 +162,7 @@ agenda.btnConsCont.clicked.connect(ConsultarContato)
 listarContatos.btnGerarPdf.clicked.connect(gerarPdf)
 listarContatos.btnExcluirCtt.clicked.connect(excluirContato)
 listarContatos.btnVoltar.clicked.connect(BotaoVoltarAgenda)
+listarContatos.editContact.clicked.connect(Editar)
 
 agenda.show()
 app.exec()
